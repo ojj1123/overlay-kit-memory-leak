@@ -1,38 +1,21 @@
-import { overlay, useOverlayData } from 'overlay-kit';
-import { Modal } from './modal';
+import { Outlet } from 'react-router-dom';
+// maybe you need it
+// import { useCurrentOverlay, useOverlayData } from 'overlay-kit';
 
 function App() {
-  const overlayData = useOverlayData();
-  console.log({ overlayData });
+  // NOTE
+  // Try to change this comment to the code
+  // and then check that values.
+  // That values are not GC'd even if unmounting `OverlayProvider`
+
+  // const current = useCurrentOverlay();
+  // const overlayData = useOverlayData();
+  // console.log({ current, overlayData });
 
   return (
-    <div>
-      <p>Demo with overlay-kit</p>
-      <button
-        onClick={() => {
-          // I don't use unmount callback
-          overlay.open(({ isOpen, close }) => {
-            return (
-              <Modal isOpen={isOpen}>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <p>MODAL CONTENT</p>
-                  <button onClick={close}>close modal</button>
-                </div>
-              </Modal>
-            );
-          });
-        }}
-      >
-        open modal
-      </button>
-    </div>
+    <>
+      <Outlet />
+    </>
   );
 }
 
